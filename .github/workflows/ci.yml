@@ -35,5 +35,5 @@ jobs:
         # The hostname used to communicate with the Redis service container
         REDIS_HOST: localhost
         # The default Redis port
-        REDIS_PORT: 16379
+        REDIS_PORT: 6379
         REDIS_PASSWORD: redis
