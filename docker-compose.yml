@@ -2,8 +2,6 @@ version: "3.8"
 services:
   redis:
     image: redis
-    entrypoint: /usr/local/bin/redis.sh
-    volumes:
-      - ./redis.sh:/usr/local/bin/redis.sh
+    command: redis-server --appendonly yes --requirepass redis
     ports:
       - "6379:6379"

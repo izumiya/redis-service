@@ -12,18 +12,13 @@ env:
 jobs:
   main:
     runs-on: ubuntu-latest
-    services:
-      redis:
-        image: redis
-        ports:
-          - 16379:6379
-        options: >-
-          -v ${{ github.workspace }}/redis.sh:/usr/local/bin/redis.sh
-          --entrypoint /usr/local/bin/redis.sh
     steps:
     # Downloads a copy of the code in your repository before running CI tests
     - name: Check out repository code
       uses: actions/checkout@v3
+
+    - name: Run Docker
+      run: docker-compose -f docker-compose.yml up -d
 
     # Performs a clean installation of all dependencies in the `package.json` file
     # For more information, see https://docs.npmjs.com/cli/ci.html
